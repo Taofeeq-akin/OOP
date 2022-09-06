@@ -257,6 +257,7 @@ Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
 */
 
+/*
 // Coding Challenge 3
 const Car = function (make, speed) {
   this.make = make;
@@ -296,3 +297,4 @@ tesla.chargeBattery(90)
 tesla.acc();
 tesla.acc();
 tesla.brake();
+*/

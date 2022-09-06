@@ -47,8 +47,11 @@ object.create create a new object and the prototype of the object will be the ob
 and not mostly used unlike the others
 
 /////////////////////////////////////////////////
-// Inheritance between Classes: Constructor Functions
+// Inheritance between Classes Constructor Functions
 
 More explanation on Prototype and Prototype-chain
 
 and also using Object.creat to connect child elememt to parent for the class of student to be able to have access to the parent.
+
+///////////////////////////////////////////
+// Inheritance between Classes ES6 Classes
