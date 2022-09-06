@@ -180,7 +180,7 @@ const niyi = Object.create(NewPersonProto);
 niyi.init('Tee', 2020);
 niyi.calAge();
 */
-
+/*
 // Coding Challenge 2 : Re-creating challenge 1
 class CarSpeed {
   constructor(carname, speed) {
@@ -217,3 +217,41 @@ bmw.speedUS;
 bmw.speedUS = 120;
 
 bmw.acc();
+*/
+
+// Inheritance between Classes: Constructor Functions
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.CalAge = function () {
+  console.log(2020 - this.birthYear);
+};
+
+// Student is the child of person and inherit from person class
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and i study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2005, 'Computer Science');
+mike.introduce();
+mike.CalAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
