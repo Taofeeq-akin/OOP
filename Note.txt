@@ -1,0 +1,47 @@
+ObJECT ORIENTED PROGRAMMING : This a programming paradigm based on the concpets of object
+
+THE 4 FUNDAMENTAL OOP PRINCIPLE
+1, Abstruction : Hiding details that does not matter.
+2, Encapsulation : Keeping methods and properties private inside the class so they cannot be accessible from outside the class.
+3 Inheritance : Making properties and methods of a certain class available in the child class, While the child expand the parent class.
+4: Polymorphims : just same like Inheritance but the child method can overwrite the parent meathod using same name.
+
+
+HOW TO IMPLEMENT OOP IN J.S. in Practice: They are actually 3 ways in doing this.
+1. Constructor functions
+2. ES6 Classes
+3. Object.create()
+
+///////////////////////
+Prototype Inheritance and The Prototype chain\
+
+// The way prototype chain works
+ola have a prototype of person
+person have a prototype of object
+
+Constructor functions are all created seperately and also the function name must start with uppercase 
+
+the child methods are decleared using the parent name then a dot. E.G ((ParentName).prototype.(childName))
+
+//////////////////////
+ES6 Classes
+So we have class expression like whiles class declaration just like funnction declaration and expression
+
+3 main things about classes 
+1. Classes are not hoisted (means can not be called before they are declared unlike function declaration)
+2. Classes are first-class citizes (can be passs into funtion and return from function)
+3. Classes are executed in strict mode
+
+// Setter and Getter are also nice function feature of classes
+
+// Static method: this a method that is particular for together with it parent class E.g (Number.parseFloat or Array.from), parseFloat can never be used if not at attached to number so that what makes it a static method.
+
+And can also be written direct in a ES6 classes function method 
+
+///////////////////////////
+Object.create()
+This also a method use in implementing prototype inheritance or delegation.
+
+object.create create a new object and the prototype of the object will be the object we passed in 
+
+and not mostly used unlike the others
