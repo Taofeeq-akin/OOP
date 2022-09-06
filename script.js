@@ -50,7 +50,7 @@ console.log(arr.__proto__.__proto__); // will give ppt available for object whic
 */
 
 /*
-// Coding Challenge
+// Coding Challenge 1
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -148,6 +148,7 @@ account.latest = 500;
 console.log(account.movement);
 */
 
+/*
 // Using Object.create
 const PersonProto = {
   calAge() {
@@ -178,3 +179,41 @@ const NewPersonProto = {
 const niyi = Object.create(NewPersonProto);
 niyi.init('Tee', 2020);
 niyi.calAge();
+*/
+
+// Coding Challenge 2 : Re-creating challenge 1
+class CarSpeed {
+  constructor(carname, speed) {
+    this.carname = carname;
+    this.speed = speed;
+  }
+
+  acc() {
+    this.speed += 10;
+    console.log(`When apply accelerator = ${this.speed}`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`When apply brake = ${this.speed}`);
+  }
+
+  get speedUS() {
+    this.speed = this.speed / 1.6;
+    console.log(`${this.speed} mi/h`);
+  }
+
+  set speedUS(kmh) {
+    this.speed = kmh * 1.6;
+    console.log(this.speed);
+  }
+}
+
+const bmw = new CarSpeed('BMW', 120);
+bmw.acc();
+bmw.acc();
+bmw.brake();
+bmw.speedUS;
+bmw.speedUS = 120;
+
+bmw.acc();
