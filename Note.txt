@@ -60,3 +60,12 @@ To implement this we will be needing 2 ingredents which are
 2. Super function
 
 
+///////////////////////////
+Encapsulation protected property and method
+ Using Encapsulation but we will basically fake it using convention by adding underSquat (_) to the front of the method or argument to protected
+
+// Encapsulation class fields and method 
+1. Public fields
+2. Private fields
+3. Public methods
+4. private methods

@@ -352,6 +352,7 @@ console.log(martha.__proto__.__proto__.__proto__);
 console.log(martha instanceof PersonCl);
 */
 
+/*
 // Inheritance btw classes using Object.create
 const PersonProto = {
   calAge() {
@@ -379,3 +380,138 @@ const jay = Object.create(StudentProto);
 jay.init('Jay Amoo', 2015, 'Computer science');
 jay.introduce();
 jay.calAge();
+*/
+
+// // // // // // // // // // // // //
+// Another class example
+class Account {
+  // 1) Public fields
+  locale = navigator.language;
+
+  // 2) Private Fields
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.#pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
+  }
+
+  // Public interface and are also called API
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val);
+    return this;
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+    return this;
+  }
+
+  _approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan apporved');
+      return this;
+    }
+  }
+}
+
+const ola = new Account('Ola', 'EUR', 1111);
+ola.deposit(100);
+ola.withdraw(300);
+ola.requestLoan(400);
+
+console.log(ola.getMovements());
+console.log(ola);
+
+// console.log(ola.pin)
+
+// chaining : the methods wont chain at first cause they are not returning anything
+// so we have ro make ir return its method b adding return this inside the methods
+ola.deposit(200).deposit(899).withdraw(500).requestLoan(4000).withdraw(1000);
+console.log(ola.getMovements());
+
+// // // // // // // // // // // // // //
+// Coding Challenge 4
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+}
+
+class EV extends CarCl {
+  #charge;
+
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.chargeTo = chargeTo;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${this.chargeTo}`
+    );
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.charge--;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }`
+    );
+    return this;
+  }
+}
+
+// Link the prototypes
+// EV.prototype = Object.create(CarCl.prorotype);
+
+// EV.prototype.accelerate = function () {
+//   this.speed += 20;
+//   this.charge--;
+//   console.log(
+//     `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}`
+//   );
+// };
+
+const revian = new EV('Rivian', 120, 23);
+// console.log(revian.charge);
+
+revian.accelerate().chargeBattery(90).brake();
