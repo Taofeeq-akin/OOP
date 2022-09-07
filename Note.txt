@@ -55,3 +55,8 @@ and also using Object.creat to connect child elememt to parent for the class of 
 
 ///////////////////////////////////////////
 // Inheritance between Classes ES6 Classes
+To implement this we will be needing 2 ingredents which are 
+1. Extends keyword
+2. Super function
+
+

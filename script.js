@@ -298,3 +298,84 @@ tesla.acc();
 tesla.acc();
 tesla.brake();
 */
+
+/*
+// Inheritance btw classes Using ES6 classes
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // instance Method
+  calAge() {
+    console.log(2030 - this.birthYear);
+  }
+
+  // Trying validation using setters
+  // Creating a setter for a property name that already exist
+  set fullName(name) {
+    // console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name`);
+  }
+  // if we get jessica.fullName the name wont be read so we nedd to set a getter also
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static Method
+  static hey() {
+    console.log('How you over there 🖐');
+  }
+}
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // always need to happen first to have the this key word
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} i study ${this.course}`);
+  }
+}
+
+const martha = new StudentCl('martha james', 2020, 'computer science');
+
+martha.introduce();
+martha.calAge();
+
+console.log(martha.__proto__.__proto__.__proto__);
+console.log(martha instanceof PersonCl);
+*/
+
+// Inheritance btw classes using Object.create
+const PersonProto = {
+  calAge() {
+    console.log(2030 - this.birthYear);
+  },
+
+  init(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  },
+};
+
+const StudentProto = Object.create(PersonProto);
+
+StudentProto.init = function (fullName, birthYear, course) {
+  PersonProto.init.call(this, fullName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.fullName} i study ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init('Jay Amoo', 2015, 'Computer science');
+jay.introduce();
+jay.calAge();
