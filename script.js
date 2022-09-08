@@ -32,7 +32,7 @@ console.log(Person.prototype.isPrototypeOf(ola));
 // .prototypeOfLinkedObjects
 
 Person.prototype.species = 'Home Sapiens'; // Using this to create
-console.log(ola); // will inherit species from ot prototype same as calAge function
+console.log(ola); // will inherit species from it prototype same as calAge function
 console.log(ola.species, tee.species);
 
 console.log(ola.hasOwnProperty('firstName'));
@@ -82,11 +82,6 @@ data2.brake();
 // ES6 Classes
 //  Using class declaration
 class PersonCl {
-  // constructor(firstName, birthYear) {
-  //   this.firstName = firstName;
-  //   this.birthYear = birthYear;
-  // }
-
   constructor(fullName, birthYear) {
     this.fullName = fullName;
     this.birthYear = birthYear;
@@ -158,9 +153,9 @@ const PersonProto = {
 
 const steven = Object.create(PersonProto);
 // Doing creating the child object in this manner is not really okay
-steven.name = 'Steven';
-steven.birthYear = 2017;
-steven.calAge();
+// steven.name = 'Steven';
+// steven.birthYear = 2017;
+// steven.calAge();
 
 console.log(steven.__proto__);
 
@@ -180,6 +175,7 @@ const niyi = Object.create(NewPersonProto);
 niyi.init('Tee', 2020);
 niyi.calAge();
 */
+
 /*
 // Coding Challenge 2 : Re-creating challenge 1
 class CarSpeed {
@@ -351,7 +347,6 @@ martha.calAge();
 console.log(martha.__proto__.__proto__.__proto__);
 console.log(martha instanceof PersonCl);
 */
-
 /*
 // Inheritance btw classes using Object.create
 const PersonProto = {
@@ -377,11 +372,13 @@ StudentProto.introduce = function () {
 };
 
 const jay = Object.create(StudentProto);
+
 jay.init('Jay Amoo', 2015, 'Computer science');
 jay.introduce();
 jay.calAge();
+// console.log(StudentProto.__proto__)
 */
-
+/*
 // // // // // // // // // // // // //
 // Another class example
 class Account {
@@ -439,9 +436,10 @@ console.log(ola);
 // console.log(ola.pin)
 
 // chaining : the methods wont chain at first cause they are not returning anything
-// so we have ro make ir return its method b adding return this inside the methods
+// so we have ro make ir return its method by adding return this inside the methods
 ola.deposit(200).deposit(899).withdraw(500).requestLoan(4000).withdraw(1000);
 console.log(ola.getMovements());
+*/
 
 // // // // // // // // // // // // // //
 // Coding Challenge 4
@@ -481,9 +479,9 @@ class EV extends CarCl {
   }
 
   chargeBattery(chargeTo) {
-    this.chargeTo = chargeTo;
+    this.charge = chargeTo;
     console.log(
-      `${this.make} is going at ${this.speed} km/h, with a charge of ${this.chargeTo}`
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}`
     );
     return this;
   }
@@ -500,18 +498,11 @@ class EV extends CarCl {
   }
 }
 
-// Link the prototypes
-// EV.prototype = Object.create(CarCl.prorotype);
-
-// EV.prototype.accelerate = function () {
-//   this.speed += 20;
-//   this.charge--;
-//   console.log(
-//     `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}`
-//   );
-// };
 
 const revian = new EV('Rivian', 120, 23);
-// console.log(revian.charge);
+// console.log(revian.#charge);
+// revian.chargeBattery(90)
 
-revian.accelerate().chargeBattery(90).brake();
+revian.accelerate().brake().accelerate().accelerate().chargeBattery(90).accelerate();
+
+console.log(revian.speedUS)

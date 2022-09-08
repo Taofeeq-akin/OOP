@@ -33,6 +33,8 @@ So we have class expression like whiles class declaration just like funnction de
 3. Classes are executed in strict mode
 
 // Setter and Getter are also nice function feature of classes
+after using set to set a method 
+We need to use a get to make it available
 
 // Static method: this a method that is particular for together with it parent class E.g (Number.parseFloat or Array.from), parseFloat can never be used if not at attached to number so that what makes it a static method.
 
